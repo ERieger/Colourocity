@@ -14,7 +14,7 @@ function draw() {
     rect(0, floorHeight, width, height);
 
     player.collide();
-    player.move();
     player.gravity();
+    player.move();
     player.draw();
 }

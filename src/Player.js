@@ -9,17 +9,20 @@ class Player {
         this.s = s;
         this.speedY = 0;
         this.collideGrnd = false;
+        this.jump = false;
     }
 
     // Check player collisions
     collide() {
-        this.collideGrnd = collideRectRect(0, floorHeight, width, height, this.x, this.y, this.w, this.h);
+        if (this.jump == false) {
+            this.collideGrnd = collideLineRect(0, floorHeight, width, floorHeight, this.x, this.y, this.w, this.h);
+        }
     }
 
     move() {
-        if (keyIsDown(UP_ARROW) && this.collideGrnd == true) {
-            console.log('jumping');
+        if (keyIsDown(UP_ARROW) && this.collideGrnd == false) {
             this.speedY -= 20;
+            this.jump = true;
         } else if (keyIsDown(RIGHT_ARROW) && this.x + this.w < width) {
             this.x += this.s;
         } else if (keyIsDown(LEFT_ARROW) && this.x > 0) {
@@ -36,6 +39,7 @@ class Player {
         if (this.collideGrnd == true) {
             this.speedY = 0; // Reset falling speed
             this.y = floorHeight - this.h; // 
+            this.jump = false;
         }
     }
 
