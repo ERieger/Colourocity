@@ -1,6 +1,6 @@
 /// <reference path="./modules/p5.d.ts" />
 
-let player = new Player(50, 0, 32, 37, 5, 10);
+let player = new Player(50, 0, 42, 47, 5, 10);
 let floorHeight = 520;
 
 function setup() {
@@ -13,6 +13,7 @@ function draw() {
     fill(0);
     rect(0, floorHeight, width, height - floorHeight);
 
+    player.collide();
     player.gravity();
     player.move();
     player.draw();
