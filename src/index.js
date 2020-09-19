@@ -11,10 +11,10 @@ function draw() {
     background(220);
     noStroke();
     fill(0);
-    rect(0, floorHeight, width, height - floorHeight);
+    rect(0, floorHeight, width, height);
 
     player.collide();
-    player.gravity();
     player.move();
+    player.gravity();
     player.draw();
 }

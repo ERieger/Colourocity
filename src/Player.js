@@ -13,7 +13,18 @@ class Player {
 
     // Check player collisions
     collide() {
-        this.collideGrnd = collideLineRect(0, floorHeight, width, floorHeight, this.x, this.y, this.w, this.h);
+        this.collideGrnd = collideRectRect(0, floorHeight, width, height, this.x, this.y, this.w, this.h);
+    }
+
+    move() {
+        if (keyIsDown(UP_ARROW) && this.collideGrnd == true) {
+            console.log('jumping');
+            this.speedY -= 20;
+        } else if (keyIsDown(RIGHT_ARROW) && this.x + this.w < width) {
+            this.x += this.s;
+        } else if (keyIsDown(LEFT_ARROW) && this.x > 0) {
+            this.x -= this.s;
+        }
     }
 
     // Gravity function
@@ -25,16 +36,6 @@ class Player {
         if (this.collideGrnd == true) {
             this.speedY = 0; // Reset falling speed
             this.y = floorHeight - this.h; // 
-        }
-    }
-
-    move() {
-        if (keyIsDown(UP_ARROW) && this.collideGrnd == true) {
-            this.speedY -= 20;
-        } else if (keyIsDown(RIGHT_ARROW) && this.x + this.w < width) {
-            this.x += this.s;
-        } else if (keyIsDown(LEFT_ARROW) && this.x > 0) {
-            this.x -= this.s;
         }
     }
 
