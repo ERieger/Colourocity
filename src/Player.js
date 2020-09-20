@@ -20,7 +20,7 @@ class Player {
     }
 
     move() {
-        if (keyIsDown(UP_ARROW) && this.collideGrnd == false) {
+        if (keyIsDown(UP_ARROW) && this.jump == false) {
             this.speedY -= 20;
             this.jump = true;
         } else if (keyIsDown(RIGHT_ARROW) && this.x + this.w < width) {
