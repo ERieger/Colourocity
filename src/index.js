@@ -1,19 +1,24 @@
 /// <reference path="./modules/p5.d.ts" />
 
-let player = new Player(50, 0, 32, 37, 5, 10);
-let floorHeight = 520;
+let player;
+let platforms = [];
 
 function setup() {
     createCanvas(680, 560);
+
+    // Player
+    player = new Player(width / 2, 50, 50, 50, 10);
+
+    // Create Platforms
+    platforms.push(new Platform(width / 2, height - 20, width, 40));
 }
 
 function draw() {
     background(220);
-    noStroke();
-    fill(0);
-    rect(0, floorHeight, width, height - floorHeight);
 
-    player.gravity();
-    player.move();
+    for (const platform of platforms) {
+        platform.draw();
+    }
+
     player.draw();
 }
