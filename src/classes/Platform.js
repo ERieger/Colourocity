@@ -1,18 +1,17 @@
 class Platform {
-    constructor(x, y, w, h) {
-        this.position = createVector(x, y);
-        this.size = createVector(w, h);
-    }
+	constructor(x, y, w, h, colour) {
+		this.sprite = createSprite(x, y);
 
-    draw() {
-        push();
+		this.sprite.setCollider('rectangle', 0, 0, w, h);
+		this.sprite.draw = this.draw.bind(this);
 
-        fill('black');
-        noStroke();
-        
-        rectMode(CENTER);
-        rect(this.position.x, this.position.y, this.size.x, this.size.y);
+		this.size = createVector(w, h);
+		this.colour = colour;
+	}
 
-        pop();
-    }
+	draw() {
+		rectMode(CENTER);
+		fill(this.colour);
+		rect(0, 0, this.size.x, this.size.y);
+	}
 }

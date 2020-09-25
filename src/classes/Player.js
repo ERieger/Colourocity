@@ -1,58 +1,60 @@
 class Player {
-    // Class variables
-    constructor(x, y, w, h, speed) {
-        this.position = createVector(x, y);
-        this.size = createVector(w, h);
+	constructor(x, y, w, h, colour, speed) {
+		this.sprite = createSprite(x, y);
 
-        this.speed = speed;
-        this.delta = createVector(0, 0);
+		this.sprite.setCollider('rectangle', 0, 0, w, h);
+		this.sprite.draw = this.draw.bind(this);
 
-        this.isGrounded = false;
-    }
+		this.size = createVector(w, h);
+		this.colour = colour;
 
-    draw() {
-        push();
-        
-        // Draw
-        rectMode(CENTER);
-        fill('pink');
+		this.canJump = false;
+		this.speed = speed;
+	}
 
-        rect(this.position.x, this.position.y, this.size.x, this.size.y, 5);
+	draw() {
+		rectMode(CENTER);
+		fill(this.colour);
+		rect(0, 0, this.size.x, this.size.y, 5);
+	}
 
-        // Gravity
-        if (this.delta.y < 20) this.delta.y += 1;
+	update() {
+		this.handleInput();
+		this.gravity();
+		this.collide();
+	}
 
-        // Move
-        const goal = this.position.copy().add(this.delta);
+	gravity() {
+		if (this.sprite.velocity.y < 20) this.sprite.velocity.y += 1;
+	}
 
-        let canMove = true;
-        for (const platform of platforms) {
-            const hit = collideRectRectVector(
-                goal.copy().sub(this.size.copy().div(2)), this.size,
-                platform.position.copy().sub(platform.size.copy().div(2)), platform.size
-            );
+	collide() {
+		const target = this.sprite.position.copy();
 
-            if (hit) {
-                this.position.add(createVector(0, (platform.position.y - this.position.y) - (platform.size.y / 2 + this.size.y / 2)));
+		this.canJump = false;
+		for (const platform of platforms) {
+			if (this.sprite.collide(platform.sprite)) {
+				const t1 = target.y - this.size.y / 2;
+				const b1 = target.y + this.size.y / 2;
 
-                this.isGrounded = true;
-                canMove = false;
-            }
-        }
+				const t2 = platform.sprite.position.y - platform.size.y / 2;
 
-        if (canMove) this.position.y += this.delta.y;
-        else this.delta.y = 0;
+				if (t1 < t2 && t2 < b1) this.canJump = true;
+			}
+		}
+	}
 
-        this.position.x += this.delta.x;
+	handleInput() {
+		// U + W
+		if ((keyIsDown(38) || keyIsDown(87)) && this.canJump) {
+			this.sprite.velocity.y = -20;
+		}
 
-        // Input
-        if (keyIsDown(UP_ARROW) && this.isGrounded) {
-            this.delta.y = -20;
-            this.isGrounded = false;
-        }
-
-        this.delta.x = keyIsDown(LEFT_ARROW) ? -this.speed : keyIsDown(RIGHT_ARROW) ? this.speed : 0;
-
-        pop();
-    }
+		this.sprite.velocity.x =
+			keyIsDown(37) || keyIsDown(65) // L + A
+				? -this.speed
+				: keyIsDown(39) || keyIsDown(68) // R + D
+				? this.speed
+				: 0;
+	}
 }
