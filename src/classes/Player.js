@@ -34,26 +34,26 @@ class Player {
 		this.canJump = false;
 		for (const platform of platforms) {
 			if (this.sprite.collide(platform.sprite)) {
-				const t1 = target.y - this.size.y / 2;
-				const b1 = target.y + this.size.y / 2;
+				const t1 = target.y - this.size.y / 2; // top of the player
+				const b1 = target.y + this.size.y / 2; // button of the player
 
-				const t2 = platform.sprite.position.y - platform.size.y / 2;
+				const t2 = platform.sprite.position.y - platform.size.y / 2; // top of the platform
 
-				if (t1 < t2 && t2 < b1) this.canJump = true;
+                if (t1 < t2 && t2 < b1) this.canJump = true;
 			}
 		}
 	}
 
 	handleInput() {
-		// U + W
+		// Up arrow + W
 		if ((keyIsDown(38) || keyIsDown(87)) && this.canJump) {
 			this.sprite.velocity.y = -20;
 		}
 
 		this.sprite.velocity.x =
-			keyIsDown(37) || keyIsDown(65) // L + A
+			keyIsDown(37) || keyIsDown(65) // Left arrow + A
 				? -this.speed
-				: keyIsDown(39) || keyIsDown(68) // R + D
+				: keyIsDown(39) || keyIsDown(68) // Right arrow + D
 				? this.speed
 				: 0;
 	}
