@@ -1,4 +1,5 @@
 class Player {
+	// Player class variables
 	constructor(x, y, w, h, colour, speed) {
 		this.sprite = createSprite(x, y);
 
@@ -12,34 +13,43 @@ class Player {
 		this.speed = speed;
 	}
 
+	// Draw player to the screen
 	draw() {
 		rectMode(CENTER);
 		fill(this.colour);
 		rect(0, 0, this.size.x, this.size.y, 5);
 	}
 
+	// Update inputs, gravity and collision
 	update() {
 		this.handleInput();
 		this.gravity();
 		this.collide();
 	}
 
+	// Move the player down at an increasing rate
 	gravity() {
 		if (this.sprite.velocity.y < 20) this.sprite.velocity.y += 1;
 	}
 
+	// Function that handels collision
 	collide() {
+		// Copy the player's position into a temp variable
 		const target = this.sprite.position.copy();
 
+		// Prevent jumping while not colliding ground
 		this.canJump = false;
+
+		// Loop through all platforms
 		for (const platform of platforms) {
 			if (this.sprite.collide(platform.sprite)) {
-				const t1 = target.y - this.size.y / 2; // top of the player
-				const b1 = target.y + this.size.y / 2; // button of the player
+				const p = this.getBounds(platform.sprite.position, platform.size);
+				const c = this.getBounds(target, this.size);
 
-				const t2 = platform.sprite.position.y - platform.size.y / 2; // top of the platform
-
-                if (t1 < t2 && t2 < b1) this.canJump = true;
+				// Jump of on top
+				if (c.t < p.t && p.t < c.b) {
+					this.canJump = true;
+				}
 			}
 		}
 	}
@@ -50,11 +60,26 @@ class Player {
 			this.sprite.velocity.y = -20;
 		}
 
-		this.sprite.velocity.x =
-			keyIsDown(37) || keyIsDown(65) // Left arrow + A
-				? -this.speed
-				: keyIsDown(39) || keyIsDown(68) // Right arrow + D
-				? this.speed
-				: 0;
+		// Reset velocity
+		this.sprite.velocity.x = 0;
+		
+		// Left arrow + A
+		if (keyIsDown(37) || keyIsDown(65)) {
+			this.sprite.velocity.x = -this.speed; 
+		}
+
+		// Right arrow + D
+		if (keyIsDown(39) || keyIsDown(68)) {
+			this.sprite.velocity.x = this.speed; 
+		}
+	}
+
+	getBounds(position, size) {
+		return {
+			t: position.y - size.y / 2,
+			b: position.y + size.y / 2,
+			l: position.x - size.x / 2,
+			r: position.x + size.x / 2
+		}
 	}
 }

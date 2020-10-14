@@ -14,7 +14,8 @@ function setup() {
 	createPlatform(20, height / 2, 40, height, color(0));
 	createPlatform(width - 20, height / 2, 40, height, color(0));
 
-	createPlatform(50, 300, 300, 25, color(0));
+	// Platform
+	createPlatform(50, 350, 300, 25, color(0));
 }
 
 function draw() {
