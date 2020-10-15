@@ -46,10 +46,16 @@ class Player {
 				const p = this.getBounds(platform.sprite.position, platform.size);
 				const c = this.getBounds(target, this.size);
 
-				// Jump of on top
+				if (c.l < p.l && p.l < c.r) continue; // L
+				if (c.l < p.r && p.r < c.r) continue; // R
+
+				// Top
 				if (c.t < p.t && p.t < c.b) {
 					this.canJump = true;
+					this.sprite.velocity.y = 0;
 				}
+
+				if (c.t < p.b && p.b < c.b) this.sprite.velocity.y = 0; // Bottom
 			}
 		}
 	}
