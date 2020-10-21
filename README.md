@@ -1,12 +1,12 @@
 # colourocity
 
-![License](https://img.shields.io/github/license/Jadie-Wadie/word-sort)
+![License](https://img.shields.io/github/license/ERieger/colourocity)
 
-> `colourocity` is a simple puzzle game inspired by [Chrome](https://www.coolmathgames.com/0-chrome).
+> Colourocity is a simple puzzle game inspired by [Chrome](https://www.coolmathgames.com/0-chrome).
 
 ## Goal
 
-The goal of `colourocity` is to collect keys and open the exit door.
+The goal of Colourocity is to collect keys and open the exit door.
 To collect keys, your character must be the same colour as the key.
 You can change and mix colours by interacting with the coloured dots.
 
@@ -31,7 +31,7 @@ This project was built with:
 
 ## Testing
 
-`colourocity` has been tested in [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Chrome](https://www.google.com/intl/en_au/chrome/).
+Colourocity has been tested in [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Chrome](https://www.google.com/intl/en_au/chrome/).
 
 ## License
 
