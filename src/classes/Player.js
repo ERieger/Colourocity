@@ -43,8 +43,8 @@ class Player {
 		// Loop through all platforms
 		for (const platform of platforms) {
 			if (this.sprite.collide(platform.sprite)) {
-				const p = this.getBounds(platform.sprite.position, platform.size);
-				const c = this.getBounds(target, this.size);
+				const p = this.getBounds(platform.sprite.position, platform.size); // Current platform bounds
+				const c = this.getBounds(target, this.size); // Player bounds
 
 				if (c.l < p.l && p.l < c.r) continue; // L
 				if (c.l < p.r && p.r < c.r) continue; // R
