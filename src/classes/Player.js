@@ -88,4 +88,10 @@ class Player {
 			r: position.x + size.x / 2
 		}
 	}
+
+	teleport(x, y) {
+		this.sprite.velocity.x = 0;
+		this.sprite.position.x = x;
+		this.sprite.position.y = y;
+	}
 }

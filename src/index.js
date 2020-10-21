@@ -24,26 +24,28 @@ let levels = [{
 	}],
 	keys: [],
 	colours: []
+}, {
+	stucture: [{
+		x: 320,
+		y: 350,
+		w: 300,
+		h: 25,
+		colour: 0
+	}],
+	keys: [],
+	colours: []
 }
 ];
 
 function setup() {
 	createCanvas(680, 560);
 
+	displayLevel(0);
+
 	// Player
 	player = new Player(width / 2, height - 65, 50, 50, color('aqua'), 7.5);
 
-	// Floor
-	createPlatform(width / 2, height - 15, width, 30, color(0));
-
-	// Roof
-	createPlatform(width / 2, 5, width, 10, color(255));
-
-	// Walls
-	createPlatform(15, height / 2, 30, height, color(0));
-	createPlatform(width - 15, height / 2, 30, height, color(0));
-
-	displayLevel(0);
+	player.teleport(width / 2, 506);
 }
 
 function draw() {
@@ -60,6 +62,18 @@ function createPlatform(x, y, w, h, colour) {
 }
 
 function displayLevel(level) {
+	platforms = [];
+
+	// Floor
+	createPlatform(width / 2, height - 15, width, 30, color(0));
+
+	// Roof
+	createPlatform(width / 2, 5, width, 10, color(255));
+
+	// Walls
+	createPlatform(15, height / 2, 30, height, color(0));
+	createPlatform(width - 15, height / 2, 30, height, color(0));
+
 	for (let i = 0; i < levels[level].stucture.length; i++) {
 		createPlatform(levels[level].stucture[i].x, levels[level].stucture[i].y, levels[level].stucture[i].w, levels[level].stucture[i].h, levels[level].stucture[i].colour);
 	}
