@@ -1,13 +1,12 @@
 let player;
-const paint;
+let paint;
 let platforms = [];
 
 function setup() {
 	createCanvas(680, 560);
 
 	displayLevel(0);
-
-	paint = new Paint(50, 50, red);
+	paint = new Paint(width / 2, 50, color('red'));
 
 	// Player
 	player = new Player(width / 2, height - 65, 50, 50, color('aqua'), 7.5);
@@ -17,6 +16,8 @@ function setup() {
 
 function draw() {
 	background(255);
+	paint.draw();
+
 
 	player.update();
 
