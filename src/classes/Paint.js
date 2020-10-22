@@ -10,6 +10,8 @@ class Paint {
         push();
         ellipseMode(CENTER);
         fill(this.colour);
+        strokeWeight(1);
+        stroke(51);
         ellipse(this.x, this.y, this.w);
         pop();
     }

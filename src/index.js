@@ -1,32 +1,28 @@
 let player;
-let paint;
+let paints = [];
 let platforms = [];
+let door;
+let paint;
 
 function setup() {
 	createCanvas(680, 560);
 
 	displayLevel(0);
-	paint = new Paint(width / 2, 50, color('red'));
 
 	// Player
 	player = new Player(width / 2, height - 65, 50, 50, color('aqua'), 7.5);
 
-	player.teleport(width / 2, 506);
-}
-
-function draw() {
-	background(255);
-	paint.draw();
-
-
-	player.update();
-
-	drawSprites();
+	player.teleport(width / 3, 506);
 }
 
 function createPlatform(x, y, w, h, colour) {
 	const platform = new Platform(x, y, w, h, colour);
 	platforms.push(platform);
+}
+
+function createPaint(x, y, colour) {
+	paint = new Paint(x, y, colour);
+	paints.push(paint);
 }
 
 function displayLevel(level) {
@@ -45,4 +41,20 @@ function displayLevel(level) {
 	for (let i = 0; i < levels[level].stucture.length; i++) {
 		createPlatform(levels[level].stucture[i].x, levels[level].stucture[i].y, levels[level].stucture[i].w, levels[level].stucture[i].h, levels[level].stucture[i].colour);
 	}
+
+	for (let i = 0 ; i < levels[level].paints.length ; i++) {
+		createPaint(levels[level].paints[i].x, levels[level].paints[i].y, levels[level].paints[i].colour);
+	}
+
+	door = new Door(levels[level].door.x, levels[level].door.y, levels[level].door.w, levels[level].door.h);
+}
+
+function draw() {
+	background(255);
+	door.draw();
+	paint.draw();
+
+	player.update();
+
+	drawSprites();
 }
