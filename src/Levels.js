@@ -39,7 +39,7 @@ let levels = [{
 	keys: [],
 	door: {
 		x: 80,
-		y: 470,
+		y: 493,
 		w: 55,
 		h: 75
 	}
@@ -55,7 +55,7 @@ let levels = [{
 	keys: [],
 	door: {
 		x: 80,
-		y: 470,
+		y: 493,
 		w: 55,
 		h: 75
 	}
