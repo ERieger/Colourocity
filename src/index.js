@@ -10,7 +10,7 @@ function setup() {
 	displayLevel(0);
 
 	// Player
-	player = new Player(width / 2, height - 65, 50, 50, color('aqua'), 7.5);
+	player = new Player(width / 2, height - 65, 50, 50, color('white'), 7.5);
 
 	player.teleport(width / 3, 506);
 }
@@ -29,7 +29,7 @@ function displayLevel(level) {
 	for (let i = 0 ; i < platforms.length ; i++) {
 		platforms[i].remove();
 	}
-	
+
 	platforms = [];
 
 	// Floor

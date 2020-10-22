@@ -3,7 +3,7 @@ let levels = [{
 	paints: [{
 		x: 340,
 		y: 510,
-		colour: 255
+		colour: '#0000ff'
 	}],
 	keys: [],
 	door: {

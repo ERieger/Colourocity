@@ -15,9 +15,12 @@ class Player {
 
 	// Draw player to the screen
 	draw() {
+		push();
 		rectMode(CENTER);
 		fill(this.colour);
+		stroke(0);
 		rect(0, 0, this.size.x, this.size.y, 5);
+		pop();
 	}
 
 	// Update inputs, gravity and collision
