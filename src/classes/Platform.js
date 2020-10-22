@@ -14,4 +14,8 @@ class Platform {
 		fill(this.colour);
 		rect(0, 0, this.size.x, this.size.y);
 	}
+
+	remove() {
+		this.sprite.remove();
+	}
 }

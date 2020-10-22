@@ -26,6 +26,10 @@ function createPaint(x, y, colour) {
 }
 
 function displayLevel(level) {
+	for (let i = 0 ; i < platforms.length ; i++) {
+		platforms[i].remove();
+	}
+	
 	platforms = [];
 
 	// Floor
