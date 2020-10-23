@@ -9,6 +9,10 @@ let levels = [{
 		x: 500,
 		y: 510,
 		colour: '#0000ff'
+	}, {
+		x: 253,
+		y: 50,
+		colour: 'red'
 	}],
 	door: {
 		x: 80,
@@ -18,26 +22,26 @@ let levels = [{
 	}
 }, {
 	stucture: [{
-			x: 320,
-			y: 350,
-			w: 300,
-			h: 25,
-			colour: 0
-		},
-		{
-			x: 67,
-			y: 170,
-			w: 75,
-			h: 25,
-			colour: 0
-		},
-		{
-			x: 613,
-			y: 170,
-			w: 75,
-			h: 25,
-			colour: 0
-		}
+		x: 320,
+		y: 350,
+		w: 300,
+		h: 25,
+		colour: 0
+	},
+	{
+		x: 67,
+		y: 170,
+		w: 75,
+		h: 25,
+		colour: 0
+	},
+	{
+		x: 613,
+		y: 170,
+		w: 75,
+		h: 25,
+		colour: 0
+	}
 	],
 	paints: [],
 	keys: [],

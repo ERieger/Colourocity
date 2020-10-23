@@ -64,11 +64,21 @@ function displayLevel(level) {
 	door = new Door(levels[level].door.x, levels[level].door.y, levels[level].door.w, levels[level].door.h);
 }
 
+function drawElements() {
+	for (let i = 0 ; i < keys.length ; i++) {
+		keys[i].draw();
+	}
+
+	for(let i = 0 ; i < paints.length ; i++) {
+		paints[i].draw();
+	}
+}
+
 function draw() {
 	background(255);
 	door.draw();
-	paint.draw();
-	key.draw();
+
+	drawElements();
 
 	player.update();
 
