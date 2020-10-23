@@ -1,8 +1,10 @@
 let player;
 let paints = [];
 let platforms = [];
+let keys = [];
 let door;
 let paint;
+let key;
 
 function setup() {
 	createCanvas(680, 560);
@@ -23,6 +25,11 @@ function createPlatform(x, y, w, h, colour) {
 function createPaint(x, y, colour) {
 	paint = new Paint(x, y, colour);
 	paints.push(paint);
+}
+
+function createKey(x, y, colour) {
+	key = new Key(x, y, colour);
+	keys.push(key);
 }
 
 function displayLevel(level) {
@@ -50,6 +57,10 @@ function displayLevel(level) {
 		createPaint(levels[level].paints[i].x, levels[level].paints[i].y, levels[level].paints[i].colour);
 	}
 
+	for (let i = 0 ; i < levels[level].keys.length ; i++) {
+		createKey(levels[level].keys[i].x, levels[level].keys[i].y, levels[level].keys[i].colour);
+	}
+
 	door = new Door(levels[level].door.x, levels[level].door.y, levels[level].door.w, levels[level].door.h);
 }
 
@@ -57,6 +68,7 @@ function draw() {
 	background(255);
 	door.draw();
 	paint.draw();
+	key.draw();
 
 	player.update();
 

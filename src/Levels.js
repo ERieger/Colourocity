@@ -5,7 +5,11 @@ let levels = [{
 		y: 510,
 		colour: '#0000ff'
 	}],
-	keys: [],
+	keys: [{
+		x: 500,
+		y: 510,
+		colour: '#0000ff'
+	}],
 	door: {
 		x: 80,
 		y: 493,
