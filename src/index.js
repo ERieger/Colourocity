@@ -6,6 +6,7 @@ let door;
 let paint;
 let key;
 let colours = ['white', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
+
 function setup() {
 	createCanvas(680, 560);
 
@@ -33,7 +34,7 @@ function createKey(x, y, colour) {
 }
 
 function displayLevel(level) {
-	for (let i = 0 ; i < platforms.length ; i++) {
+	for (let i = 0; i < platforms.length; i++) {
 		platforms[i].remove();
 	}
 
@@ -53,11 +54,11 @@ function displayLevel(level) {
 		createPlatform(levels[level].stucture[i].x, levels[level].stucture[i].y, levels[level].stucture[i].w, levels[level].stucture[i].h, levels[level].stucture[i].colour);
 	}
 
-	for (let i = 0 ; i < levels[level].paints.length ; i++) {
+	for (let i = 0; i < levels[level].paints.length; i++) {
 		createPaint(levels[level].paints[i].x, levels[level].paints[i].y, levels[level].paints[i].colour);
 	}
 
-	for (let i = 0 ; i < levels[level].keys.length ; i++) {
+	for (let i = 0; i < levels[level].keys.length; i++) {
 		createKey(levels[level].keys[i].x, levels[level].keys[i].y, levels[level].keys[i].colour);
 	}
 
@@ -65,13 +66,17 @@ function displayLevel(level) {
 }
 
 function drawElements() {
-	for (let i = 0 ; i < keys.length ; i++) {
+	for (let i = 0; i < keys.length; i++) {
 		keys[i].draw();
 	}
 
-	for(let i = 0 ; i < paints.length ; i++) {
+	for (let i = 0; i < paints.length; i++) {
 		paints[i].draw();
-		paints[i].collision(player.sprite.position);
+		let collide = paints[i].collision(player.sprite.position);
+
+		if (collide == true) {
+			player.changeColour(paints[i].colour);
+		}
 	}
 }
 

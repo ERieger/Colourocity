@@ -97,4 +97,8 @@ class Player {
 		this.sprite.position.x = x;
 		this.sprite.position.y = y;
 	}
+
+	changeColour(colour) {
+		this.colour = colour;
+	}
 }

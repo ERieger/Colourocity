@@ -17,8 +17,8 @@ class Paint {
     }
 
     collision(position) {
-        if (position.x + player.size.x / 2 > this.x - this.w / 2 && position.x - player.size.x / 2< this.x + this.w / 2) {
-            console.log('hit');
+        if (position.x + player.size.x / 2 > this.x - this.w / 2 && position.x - player.size.x / 2 < this.x + this.w / 2) {
+            return (true);
         }
     }
 }

@@ -3,11 +3,11 @@ let levels = [{
 	paints: [{
 		x: 340,
 		y: 510,
-		colour: '#0000ff'
+		colour: 'blue'
 	}, {
 		x: 630,
 		y: 510,
-		colour: 'ffbb00'
+		colour: 'yellow'
 	}],
 	keys: [{
 		x: 500,
