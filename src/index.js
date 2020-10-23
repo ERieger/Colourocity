@@ -5,14 +5,14 @@ let keys = [];
 let door;
 let paint;
 let key;
-
+let colours = ['white', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
 function setup() {
 	createCanvas(680, 560);
 
 	displayLevel(0);
 
 	// Player
-	player = new Player(width / 2, height - 65, 50, 50, color('white'), 7.5);
+	player = new Player(width / 2, height - 65, 50, 50, color(colours[0]), 7.5);
 
 	player.teleport(width / 3, 506);
 }
@@ -71,6 +71,7 @@ function drawElements() {
 
 	for(let i = 0 ; i < paints.length ; i++) {
 		paints[i].draw();
+		paints[i].collision(player.sprite.position);
 	}
 }
 
