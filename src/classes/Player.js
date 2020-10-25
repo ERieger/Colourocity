@@ -101,4 +101,8 @@ class Player {
 	changeColour(colour) {
 		this.colour = colour;
 	}
+
+	mix(colour) {
+		
+	}
 }

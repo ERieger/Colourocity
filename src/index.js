@@ -79,6 +79,7 @@ function drawElements() {
 
 		if (collide == true) {
 			player.changeColour(paints[i].colour);
+			player.mix(paints[i].colour)
 		}
 	}
 }
