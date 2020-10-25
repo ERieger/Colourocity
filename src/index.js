@@ -5,7 +5,7 @@ let keys = [];
 let door;
 let paint;
 let key;
-let colours = ['white', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
+let colours = ['white', 'black', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
 
 function setup() {
 	createCanvas(680, 560);
@@ -37,6 +37,9 @@ function displayLevel(level) {
 	for (let i = 0; i < platforms.length; i++) {
 		platforms[i].remove();
 	}
+
+	paints = [];
+	keys = [];
 
 	platforms = [];
 
@@ -82,6 +85,7 @@ function drawElements() {
 
 function draw() {
 	background(255);
+	text(`fps:${Math.round(frameRate())}`, 30, 30);
 	door.draw();
 
 	drawElements();
