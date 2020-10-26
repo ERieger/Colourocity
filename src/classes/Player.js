@@ -71,15 +71,15 @@ class Player {
 
 		// Reset velocity
 		this.sprite.velocity.x = 0;
-		
+
 		// Left arrow + A
 		if (keyIsDown(37) || keyIsDown(65)) {
-			this.sprite.velocity.x = -this.speed; 
+			this.sprite.velocity.x = -this.speed;
 		}
 
 		// Right arrow + D
 		if (keyIsDown(39) || keyIsDown(68)) {
-			this.sprite.velocity.x = this.speed; 
+			this.sprite.velocity.x = this.speed;
 		}
 	}
 
@@ -96,25 +96,22 @@ class Player {
 		this.sprite.velocity.x = 0;
 		this.sprite.position.x = x;
 		this.sprite.position.y = y;
-	}	
+	}
 
 	mix(colour) {
 		if (this.colour == 'white') {
 			this.colour = colour;
 		}
 
-		if (colour != this.colour) {
-			for (let i = 0 ; i < combinations.length ; i++) {
-				if (colour == 'white' && combinations[i].product == this.colour) {
-					this.colour = 'white';
-				}
-				if (colour == combinations[i].c1 && this.colour == combinations[i].c2 || colour == combinations[i].c2 && this.colour == combinations[i].c1) {
-					console.log(combinations[i].product);
-					this.colour = combinations[i].product;
-					break;
-				} else if (combinations[i].product == colour) {
-					this.colour = 'black';
-				}
+		for (let i = 0; i < combinations.length; i++) {
+			if (colour == 'white') {
+				this.colour = 'white';
+			}
+			if (colour == combinations[i].c1 && this.colour == combinations[i].c2 || colour == combinations[i].c2 && this.colour == combinations[i].c1) {
+				this.colour = combinations[i].product;
+				break;
+			} else if (combinations[i].product == colour) {
+				this.colour = 'black';
 			}
 		}
 	}

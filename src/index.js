@@ -78,8 +78,12 @@ function drawElements() {
 		let collide = paints[i].collision(player.sprite.position);
 
 		if (collide == true) {
-			player.mix(paints[i].colour);
-			paints.splice(i, 1);
+			if (player.colour == paints[i].colour) {
+				return;
+			} else {
+				player.mix(paints[i].colour);
+				paints.splice(i, 1);
+			}
 		}
 	}
 }
