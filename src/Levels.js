@@ -1,3 +1,5 @@
+// Level data
+
 let levels = [{
 	stucture: [],
 	paints: [{

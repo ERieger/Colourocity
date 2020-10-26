@@ -6,6 +6,7 @@ class Paint {
         this.colour = colour;
     }
 
+    // Format and draw paints
     draw() {
         push();
         ellipseMode(CENTER);
@@ -16,6 +17,7 @@ class Paint {
         pop();
     }
 
+    // If touching player return true
     collision(position) {
         if (position.y + player.size.y / 2 > this.y - this.w / 2 && position.y - player.size.y / 2 < this.y + this.w / 2 && position.x + player.size.x / 2 > this.x - this.w / 2 && position.x - player.size.x / 2 < this.x + this.w / 2) {
             return (true);

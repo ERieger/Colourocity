@@ -1,5 +1,4 @@
 class Player {
-	// Player class variables
 	constructor(x, y, w, h, colour, speed) {
 		this.sprite = createSprite(x, y);
 
@@ -13,7 +12,7 @@ class Player {
 		this.speed = speed;
 	}
 
-	// Draw player to the screen
+	// Draw player
 	draw() {
 		push();
 		rectMode(CENTER);
@@ -30,12 +29,12 @@ class Player {
 		this.collide();
 	}
 
-	// Move the player down at an increasing rate
+	// Move the player down, increase velocity
 	gravity() {
 		if (this.sprite.velocity.y < 20) this.sprite.velocity.y += 1;
 	}
 
-	// Function that handels collision
+	// Collision function
 	collide() {
 		// Copy the player's position into a temp variable
 		const target = this.sprite.position.copy();
@@ -45,17 +44,18 @@ class Player {
 
 		// Loop through all platforms
 		for (const platform of platforms) {
+			// P5 Play check collision
 			if (this.sprite.collide(platform.sprite)) {
 				const p = this.getBounds(platform.sprite.position, platform.size); // Current platform bounds
 				const c = this.getBounds(target, this.size); // Player bounds
 
-				if (c.l < p.l && p.l < c.r) continue; // L
-				if (c.l < p.r && p.r < c.r) continue; // R
+				if (c.l < p.l && p.l < c.r) continue; // Left
+				if (c.l < p.r && p.r < c.r) continue; // Right
 
 				// Top
 				if (c.t < p.t && p.t < c.b) {
-					this.canJump = true;
-					this.sprite.velocity.y = 0;
+					this.canJump = true; // Can jump
+					this.sprite.velocity.y = 0; // Stop gravity
 				}
 
 				if (c.t < p.b && p.b < c.b) this.sprite.velocity.y = 0; // Bottom
@@ -83,6 +83,7 @@ class Player {
 		}
 	}
 
+	// Bounds of player
 	getBounds(position, size) {
 		return {
 			t: position.y - size.y / 2,
@@ -92,26 +93,33 @@ class Player {
 		}
 	}
 
+	// Teleport player
 	teleport(x, y) {
 		this.sprite.velocity.x = 0;
 		this.sprite.position.x = x;
 		this.sprite.position.y = y;
 	}
 
+	// Colour mixing
 	mix(colour) {
+		// If player white set paint colour
 		if (this.colour == 'white') {
 			this.colour = colour;
 		}
 
+		// Loop through possible colour combinations
 		for (let i = 0; i < combinations.length; i++) {
+			// If white paint, set player white
 			if (colour == 'white') {
 				this.colour = 'white';
 			}
+
+			// Check if paint and player can combine colours
 			if (colour == combinations[i].c1 && this.colour == combinations[i].c2 || colour == combinations[i].c2 && this.colour == combinations[i].c1) {
-				this.colour = combinations[i].product;
+				this.colour = combinations[i].product; // Set player colour to product
 				break;
-			} else if (combinations[i].product == colour) {
-				this.colour = 'black';
+			} else if (this.colour == combinations[i].product) {
+				this.colour = 'black'; // Set black if can't mix
 			}
 		}
 	}
