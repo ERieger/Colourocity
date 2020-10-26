@@ -99,7 +99,7 @@ function drawElements() {
 
 		// If touching player
 		if (collide == true) {
-			keys.splice(i, 1); // Remove key
+			keys.splice(i, 1); // Remove current key
 		}
 	}
 
