@@ -6,6 +6,7 @@ class Key {
         this.colour = colour;
     }
 
+    // Draw key
     draw() {
         push();
         ellipseMode(CENTER);
