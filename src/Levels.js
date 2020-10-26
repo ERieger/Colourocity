@@ -8,11 +8,15 @@ let levels = [{
 		x: 630,
 		y: 510,
 		colour: 'yellow'
+	}, {
+		x: 50,
+		y: 400,
+		colour: 'white'
 	}],
 	keys: [{
 		x: 500,
 		y: 510,
-		colour: '#0000ff'
+		colour: 'blue'
 	}, {
 		x: 253,
 		y: 50,
@@ -26,26 +30,26 @@ let levels = [{
 	}
 }, {
 	stucture: [{
-			x: 320,
-			y: 350,
-			w: 300,
-			h: 25,
-			colour: 0
-		},
-		{
-			x: 67,
-			y: 170,
-			w: 75,
-			h: 25,
-			colour: 0
-		},
-		{
-			x: 613,
-			y: 170,
-			w: 75,
-			h: 25,
-			colour: 0
-		}
+		x: 320,
+		y: 350,
+		w: 300,
+		h: 25,
+		colour: 0
+	},
+	{
+		x: 67,
+		y: 170,
+		w: 75,
+		h: 25,
+		colour: 0
+	},
+	{
+		x: 613,
+		y: 170,
+		w: 75,
+		h: 25,
+		colour: 0
+	}
 	],
 	paints: [],
 	keys: [],

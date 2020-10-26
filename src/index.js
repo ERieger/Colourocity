@@ -13,7 +13,7 @@ function setup() {
 	displayLevel(0);
 
 	// Player
-	player = new Player(width / 2, height - 65, 50, 50, color(colours[0]), 7.5);
+	player = new Player(width / 2, height - 65, 50, 50, colours[0], 7.5);
 
 	player.teleport(width / 3, 506);
 }
@@ -78,15 +78,17 @@ function drawElements() {
 		let collide = paints[i].collision(player.sprite.position);
 
 		if (collide == true) {
-			player.changeColour(paints[i].colour);
-			player.mix(paints[i].colour)
+			player.mix(paints[i].colour);
+			paints.splice(i, 1);
 		}
 	}
 }
 
 function draw() {
 	background(255);
+
 	text(`fps:${Math.round(frameRate())}`, 30, 30);
+
 	door.draw();
 
 	drawElements();

@@ -96,13 +96,26 @@ class Player {
 		this.sprite.velocity.x = 0;
 		this.sprite.position.x = x;
 		this.sprite.position.y = y;
-	}
-
-	changeColour(colour) {
-		this.colour = colour;
-	}
+	}	
 
 	mix(colour) {
-		
+		if (this.colour == 'white') {
+			this.colour = colour;
+		}
+
+		if (colour != this.colour) {
+			for (let i = 0 ; i < combinations.length ; i++) {
+				if (colour == 'white' && combinations[i].product == this.colour) {
+					this.colour = 'white';
+				}
+				if (colour == combinations[i].c1 && this.colour == combinations[i].c2 || colour == combinations[i].c2 && this.colour == combinations[i].c1) {
+					console.log(combinations[i].product);
+					this.colour = combinations[i].product;
+					break;
+				} else if (combinations[i].product == colour) {
+					this.colour = 'black';
+				}
+			}
+		}
 	}
 }
