@@ -12,6 +12,10 @@ let levels = [{
 		x: 50,
 		y: 400,
 		colour: 'white'
+	},{ 
+		x: 500,
+		y: 400,
+		colour: 'red'
 	}],
 	keys: [{
 		x: 500,
