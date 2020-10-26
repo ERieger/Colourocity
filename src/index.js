@@ -95,12 +95,18 @@ function drawElements() {
 	// Draw keys
 	for (let i = 0; i < keys.length; i++) {
 		keys[i].draw();
+		const collide = keys[i].collision(player.sprite.position); // Call collision check
+
+		// If touching player
+		if (collide == true) {
+			keys.splice(i, 1); // Remove key
+		}
 	}
 
 	// Draw keys, update collision
 	for (let i = 0; i < paints.length; i++) {
 		paints[i].draw(); // Draw paint
-		let collide = paints[i].collision(player.sprite.position); // Call collision check
+		const collide = paints[i].collision(player.sprite.position); // Call collision check
 
 		// If touching player
 		if (collide == true) {
