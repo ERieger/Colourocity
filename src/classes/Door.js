@@ -1,9 +1,11 @@
 class Door {
     constructor(x, y, w, h) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+		this.sprite = createSprite(x, y);
+
+		this.sprite.setCollider('rectangle', 0, 0, w, h);
+		this.sprite.draw = this.draw.bind(this);
+
+        this.size = createVector(w, h);
         this.locked = true;
         this.colour = 'grey';
     }
@@ -13,17 +15,17 @@ class Door {
         push();
         rectMode(CENTER);
         fill(this.colour);
-        rect(this.x, this.y, this.w, this.h); // Draw door
+        rect(this.sprite.position.x, this.sprite.position.y, this.size.x, this.size.y); // Draw door
         ellipseMode(CENTER);
         strokeWeight(1);
         stroke(0);
         fill(255)
-        ellipse(this.x + this.w / 4 , this.y + 5, 8); // Door handle
+        ellipse(this.sprite.position.x + this.size.x / 4 , this.sprite.position.y + 5, 8); // Door handle
         pop();
     }
 
-    unlock(position) {
-        if (this.x + this.w / 2 > position.x && this.x - this.w / 2 < position.x && this.y + this.h / 2 > position.y && this.y - this.h / 2 < position.y) {
+    unlock() {
+        if (this.sprite.overlap(player.sprite)) {
             player.colour = 'white';
             collectedKeys = 0;
             currentLevel++;

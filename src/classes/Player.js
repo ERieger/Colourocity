@@ -102,6 +102,7 @@ class Player {
 
 	// Colour mixing
 	mix(colour) {
+		console.log(colour);
 		// If player white set paint colour
 		if (this.colour == 'white') {
 			this.colour = colour;

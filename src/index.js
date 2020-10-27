@@ -7,7 +7,7 @@ let platforms = [];
 let keys = [];
 let door;
 let colours = ['white', 'black', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
-let currentLevel = 4;
+let currentLevel = 0;
 let collectedKeys = 0;
 
 ///////////////////////////////////////
@@ -48,6 +48,7 @@ function createKey(x, y, colour) {
 
 // Display level elements
 function displayLevel(level) {
+	currentLevel = level;
 	// Clear platforms
 	for (let i = 0; i < platforms.length; i++) {
 		platforms[i].sprite.remove(); // P5 play remove sprite
@@ -95,7 +96,7 @@ function drawElements() {
 	// Draw keys
 	for (let i = 0; i < keys.length; i++) {
 		keys[i].draw();
-		const collide = keys[i].collision(player.sprite.position); // Call collision check
+		const collide = keys[i].collision(); // Call collision check
 
 		// If touching player
 		if (collide == true) {
@@ -107,7 +108,7 @@ function drawElements() {
 	// Draw keys, update collision
 	for (let i = 0; i < paints.length; i++) {
 		paints[i].draw(); // Draw paint
-		const collide = paints[i].collision(player.sprite.position); // Call collision check
+		const collide = paints[i].collision(); // Call collision check
 
 		// If touching player
 		if (collide) {
@@ -120,8 +121,11 @@ function drawElements() {
 	}
 }
 
-// Display / check UI / UX
-function UIUX() {
+///////////////////////////////////////
+// P5 Draw Function
+
+function draw() {
+	background(255); // Reset previous frame
 	// Resart level (ESCAPE KEY)
 	if (keyIsDown(82)) {
 		displayLevel(currentLevel);
@@ -130,19 +134,9 @@ function UIUX() {
 
 	text(`fps:${Math.round(frameRate())}`, 50, 30); // FPS counter
 
-	
 	if (collectedKeys == levels[currentLevel].keys.length) {
-		door.unlock(player.sprite.position);
+		door.unlock();
 	}
-}
-
-///////////////////////////////////////
-// P5 Draw Function
-
-function draw() {
-	background(255); // Reset previous frame
-
-	UIUX(); // Update UI / UX elements
 
 	drawElements(); // Draw objects
 	drawSprites(); // P5 Play sprites
