@@ -3,29 +3,13 @@
 let levels = [{
 	stucture: [],
 	paints: [{
-		x: 340,
+		x: 400,
 		y: 510,
-		colour: 'blue'
-	}, {
-		x: 630,
-		y: 510,
-		colour: 'yellow'
-	}, {
-		x: 50,
-		y: 400,
-		colour: 'white'
-	},{ 
-		x: 500,
-		y: 400,
 		colour: 'red'
 	}],
 	keys: [{
 		x: 500,
 		y: 510,
-		colour: 'blue'
-	}, {
-		x: 253,
-		y: 50,
 		colour: 'red'
 	}],
 	door: {
@@ -41,24 +25,17 @@ let levels = [{
 		w: 300,
 		h: 25,
 		colour: 0
-	},
-	{
-		x: 67,
-		y: 170,
-		w: 75,
-		h: 25,
-		colour: 0
-	},
-	{
-		x: 613,
-		y: 170,
-		w: 75,
-		h: 25,
-		colour: 0
-	}
-	],
-	paints: [],
-	keys: [],
+	}],
+	paints: [{
+		x: 320,
+		y: 320,
+		colour: 'blue'
+	}],
+	keys: [{
+		x: 500,
+		y: 510,
+		colour: 'blue'
+	}],
 	door: {
 		x: 80,
 		y: 493,
@@ -67,14 +44,88 @@ let levels = [{
 	}
 }, {
 	stucture: [{
-		x: 320,
+		x: 200,
 		y: 350,
-		w: 300,
+		w: 150,
 		h: 25,
 		colour: 0
 	}],
-	paints: [],
-	keys: [],
+	paints: [{
+		x: 205,
+		y: 320,
+		colour: 'yellow'
+	}],
+	keys: [{
+		x: 500,
+		y: 510,
+		colour: 'yellow'
+	}],
+	door: {
+		x: 80,
+		y: 493,
+		w: 55,
+		h: 75
+	}
+}, {
+	stucture: [{
+		x: 200,
+		y: 350,
+		w: 150,
+		h: 25,
+		colour: 0
+	}],
+	paints: [{
+		x: 205,
+		y: 320,
+		colour: 'red'
+	}, {
+		x: 400,
+		y: 510,
+		colour: 'yellow'
+	}],
+	keys: [{
+		x: 500,
+		y: 510,
+		colour: 'orange'
+	}],
+	door: {
+		x: 80,
+		y: 493,
+		w: 55,
+		h: 75
+	}
+}, {
+	stucture: [{
+		x: 80,
+		y: 350,
+		w: 100,
+		h: 25,
+		colour: 0
+	}, {
+		x: 600,
+		y: 350,
+		w: 100,
+		h: 25,
+		colour: 0
+	}],
+	paints: [{
+		x: 80,
+		y: 320,
+		colour: 'red'
+	}, {
+		x: 400,
+		y: 510,
+		colour: 'yellow'
+	}, {
+		x: 550,
+		y: 510,
+		colour: 'blue'
+	}],
+	keys: [{
+		x: 590,
+		y: 310,
+		colour: 'purple'
+	}],
 	door: {
 		x: 80,
 		y: 493,

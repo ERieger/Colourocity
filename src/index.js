@@ -7,7 +7,8 @@ let platforms = [];
 let keys = [];
 let door;
 let colours = ['white', 'black', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
-let currentLevel = 0;
+let currentLevel = 4;
+let collectedKeys = 0;
 
 ///////////////////////////////////////
 // Setup
@@ -19,8 +20,7 @@ function setup() {
 
 	// Player
 	player = new Player(width / 2, height - 65, 50, 50, colours[0], 7.5); // Create player
-
-	player.teleport(width / 3, 506); // Move player onscreen
+	player.teleport(80, 500);
 }
 
 ///////////////////////////////////////
@@ -99,6 +99,7 @@ function drawElements() {
 
 		// If touching player
 		if (collide == true) {
+			collectedKeys++;
 			keys.splice(i, 1); // Remove current key
 		}
 	}
@@ -109,11 +110,9 @@ function drawElements() {
 		const collide = paints[i].collision(player.sprite.position); // Call collision check
 
 		// If touching player
-		if (collide == true) {
+		if (collide) {
 			// If same colour as player return
-			if (player.colour == paints[i].colour) {
-				return;
-			} else {
+			if (player.colour != paints[i].colour) {
 				player.mix(paints[i].colour); // Player colour mix
 				paints.splice(i, 1); // Remove paint
 			}
@@ -124,12 +123,17 @@ function drawElements() {
 // Display / check UI / UX
 function UIUX() {
 	// Resart level (ESCAPE KEY)
-	if (keyIsDown(27)) {
+	if (keyIsDown(82)) {
 		displayLevel(currentLevel);
 		player.colour = 'white';
 	}
 
 	text(`fps:${Math.round(frameRate())}`, 50, 30); // FPS counter
+
+	
+	if (collectedKeys == levels[currentLevel].keys.length) {
+		door.unlock(player.sprite.position);
+	}
 }
 
 ///////////////////////////////////////

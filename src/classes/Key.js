@@ -31,18 +31,17 @@ class Key {
     collision(position) {
         const keyBounds = this.getBounds();
 
-        if (position.y + player.size.y / 2 > keyBounds.t && position.y - player.size.y / 2 < keyBounds.b && position.x + player.size.x / 2 > keyBounds.t && position.x - player.size.z / 2 < keyBounds.b) {
-            console.log('hit');
-            // return (true);
+        if (position.y + player.size.y / 2 > keyBounds.t && position.y - player.size.y / 2 < keyBounds.b && position.x + player.size.x / 2 > keyBounds.t && position.x - player.size.z / 2 < keyBounds.b && this.colour == player.colour) {
+            return (true);
         }
     }
 
     getBounds() {
         return {
-			t: this.x - this.w / 2,
-			b: this.x + this.w / 2,
-			l: this.y - this.w / 2,
-			r: this.y + this.w / 2 + 30
-		}
+            t: this.x - this.w / 2,
+            b: this.x + this.w / 2,
+            l: this.y - this.w / 2,
+            r: this.y + this.w / 2 + 30
+        }
     }
 }
