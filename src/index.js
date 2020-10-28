@@ -7,8 +7,9 @@ let platforms = [];
 let keys = [];
 let door;
 let colours = ['white', 'black', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
-let currentLevel = 0;
+let currentLevel = 8;
 let collectedKeys = 0;
+let frames = 60;
 
 ///////////////////////////////////////
 // Setup
@@ -54,10 +55,17 @@ function displayLevel(level) {
 		platforms[i].sprite.remove(); // P5 play remove sprite
 	}
 
+	for (let i = 0; i < paints.length; i++) {
+		paints[i].sprite.remove(); // P5 play remove sprite
+	}
+
+	for (let i = 0; i < keys.length; i++) {
+		keys[i].sprite.remove(); // P5 play remove sprite
+	}
+
 	paints = []; // Clear paints
 	keys = []; // Clear keys
-
-	platforms = [];
+	platforms = []; // Clear platforms
 
 	// Floor
 	createPlatform(width / 2, height - 15, width, 30, color(0));
@@ -90,24 +98,19 @@ function displayLevel(level) {
 
 // Continuosuly draw elements
 function drawElements() {
-	door.draw(); // Draw door
-	player.update(); // Update player
-
 	// Draw keys
 	for (let i = 0; i < keys.length; i++) {
-		keys[i].draw();
 		const collide = keys[i].collision(); // Call collision check
 
 		// If touching player
 		if (collide == true) {
 			collectedKeys++;
-			keys.splice(i, 1); // Remove current key
+			keys[i].sprite.remove();
 		}
 	}
 
 	// Draw keys, update collision
 	for (let i = 0; i < paints.length; i++) {
-		paints[i].draw(); // Draw paint
 		const collide = paints[i].collision(); // Call collision check
 
 		// If touching player
@@ -115,10 +118,12 @@ function drawElements() {
 			// If same colour as player return
 			if (player.colour != paints[i].colour) {
 				player.mix(paints[i].colour); // Player colour mix
-				paints.splice(i, 1); // Remove paint
+				paints[i].sprite.remove();
 			}
 		}
 	}
+
+	player.update(); // Update player
 }
 
 ///////////////////////////////////////
@@ -132,7 +137,7 @@ function draw() {
 		player.colour = 'white';
 	}
 
-	text(`fps:${Math.round(frameRate())}`, 50, 30); // FPS counter
+	text(`fps:${Math.round(frames)}`, 50, 30); // FPS counter
 
 	if (collectedKeys == levels[currentLevel].keys.length) {
 		door.unlock();
@@ -141,3 +146,5 @@ function draw() {
 	drawElements(); // Draw objects
 	drawSprites(); // P5 Play sprites
 }
+
+setInterval(() => frames = frameRate(), 500);

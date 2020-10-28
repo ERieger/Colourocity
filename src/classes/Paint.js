@@ -14,14 +14,12 @@ class Paint {
         fill(this.colour);
         strokeWeight(1);
         stroke(51);
-        ellipse(this.sprite.position.x, this.sprite.position.y, this.w);
+        ellipse(0, 0, this.w);
         pop();
     }
 
     // If touching player return true
     collision() {
-        if (this.sprite.overlap(player.sprite)) {
-            return (true);
-        }
+        return this.sprite.overlap(player.sprite);
     }
 }

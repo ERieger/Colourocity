@@ -8,6 +8,8 @@ class Door {
         this.size = createVector(w, h);
         this.locked = true;
         this.colour = 'grey';
+
+        this.sprite.depth = -1;
     }
 
     // Draw door
@@ -15,12 +17,12 @@ class Door {
         push();
         rectMode(CENTER);
         fill(this.colour);
-        rect(this.sprite.position.x, this.sprite.position.y, this.size.x, this.size.y); // Draw door
+        rect(0, 0, this.size.x, this.size.y); // Draw door
         ellipseMode(CENTER);
         strokeWeight(1);
         stroke(0);
         fill(255)
-        ellipse(this.sprite.position.x + this.size.x / 4 , this.sprite.position.y + 5, 8); // Door handle
+        ellipse(this.size.x / 4, 5, 8); // Door handle
         pop();
     }
 
