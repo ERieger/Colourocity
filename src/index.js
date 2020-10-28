@@ -7,7 +7,7 @@ let platforms = [];
 let keys = [];
 let door;
 let colours = ['white', 'black', 'red', 'yellow', 'blue', 'orange', 'green', 'purple'];
-let currentLevel = 8;
+let currentLevel = 0;
 let collectedKeys = 0;
 let frames = 60;
 
@@ -26,7 +26,6 @@ function setup() {
 
 ///////////////////////////////////////
 // Object Creation Functions
-
 // Create platform
 function createPlatform(x, y, w, h, colour) {
 	const platform = new Platform(x, y, w, h, colour); // Temp var
@@ -50,6 +49,7 @@ function createKey(x, y, colour) {
 // Display level elements
 function displayLevel(level) {
 	currentLevel = level;
+	collectedKeys = 0;
 	// Clear platforms
 	for (let i = 0; i < platforms.length; i++) {
 		platforms[i].sprite.remove(); // P5 play remove sprite
@@ -62,6 +62,8 @@ function displayLevel(level) {
 	for (let i = 0; i < keys.length; i++) {
 		keys[i].sprite.remove(); // P5 play remove sprite
 	}
+
+	door?.sprite.remove();
 
 	paints = []; // Clear paints
 	keys = []; // Clear keys
@@ -94,10 +96,12 @@ function displayLevel(level) {
 
 	// Show door
 	door = new Door(levels[level].door.x, levels[level].door.y, levels[level].door.w, levels[level].door.h);
+
+	player?.teleport(80, 500);
 }
 
 // Continuosuly draw elements
-function drawElements() {
+function collideElements() {
 	// Draw keys
 	for (let i = 0; i < keys.length; i++) {
 		const collide = keys[i].collision(); // Call collision check
@@ -143,7 +147,7 @@ function draw() {
 		door.unlock();
 	}
 
-	drawElements(); // Draw objects
+	collideElements(); // Collide with objects
 	drawSprites(); // P5 Play sprites
 }
 
