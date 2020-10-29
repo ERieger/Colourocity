@@ -1,9 +1,9 @@
 class Door {
     constructor(x, y, w, h) {
-		this.sprite = createSprite(x, y);
+        this.sprite = createSprite(x, y);
 
-		this.sprite.setCollider('rectangle', 0, 0, w, h);
-		this.sprite.draw = this.draw.bind(this);
+        this.sprite.setCollider('rectangle', 0, 0, w, h);
+        this.sprite.draw = this.draw.bind(this);
 
         this.size = createVector(w, h);
         this.locked = true;
@@ -31,8 +31,12 @@ class Door {
             player.colour = 'white';
             collectedKeys = 0;
             completedLevels.push(currentLevel);
-            currentLevel++;
-            displayLevel(currentLevel);
+            if (currentLevel == levels.length - 1) {
+                returnMenu();
+            } else {
+                currentLevel++;
+                displayLevel(currentLevel);
+            }
         }
     }
 }

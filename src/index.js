@@ -15,6 +15,7 @@ let levelSelect = document.querySelector('.Level-Select');
 let levelButtons = document.querySelector('.buttons');
 let canvas;
 let completedLevels = [0];
+let background;
 
 levelSelect.style.display = "none";
 
@@ -22,6 +23,7 @@ function setup() {
 	canvas = createCanvas(680, 560);
 	noLoop();
 	canvas.hide();
+	background = loadImage('../public/images/paint.jpg')
 }
 
 ///////////////////////////////////////
@@ -73,7 +75,7 @@ function displayLevel(level) {
 	createPlatform(width / 2, height - 15, width, 30, color(0));
 
 	// Roof
-	createPlatform(width / 2, 5, width, 10, color(255));
+	createPlatform(width / 2, 5, width, 10, color(255, 255, 255, 0));
 
 	// Walls
 	createPlatform(15, height / 2, 30, height, color(0));
@@ -146,11 +148,11 @@ function startGame(level) {
 }
 
 function returnMenu() {
+	noLoop();
 	mainMenu.style.display = "block";
 	levelSelect.style.display = "none";
 	canvas.hide();
 	player.sprite.remove();
-	noLoop();
 }
 
 function removeElementsByClass(className) {
@@ -179,7 +181,8 @@ function selectLevelPage() {
 // P5 Draw Function
 
 function draw() {
-	background(255); // Reset previous frame
+	image(background, 0, 0, width, height); // Reset previous frame
+
 	// Resart level (R KEY)
 	if (keyIsDown(82)) {
 		displayLevel(currentLevel);
@@ -192,6 +195,7 @@ function draw() {
 		door.unlock();
 	}
 
+	// Back to menu (ESCAPE KEY)
 	if (keyIsDown(27)) {
 		returnMenu()
 	}
