@@ -10,18 +10,13 @@ let colours = ['white', 'black', 'red', 'yellow', 'blue', 'orange', 'green', 'pu
 let currentLevel = 0;
 let collectedKeys = 0;
 let frames = 60;
-
-///////////////////////////////////////
-// Setup
+let mainMenu = document.querySelector('.Main-Menu');
+let canvas;
 
 function setup() {
-	createCanvas(680, 560);
-
-	displayLevel(currentLevel); // Show current level
-
-	// Player
-	player = new Player(width / 2, height - 65, 50, 50, colours[0], 7.5); // Create player
-	player.teleport(80, 500);
+	canvas = createCanvas(680, 560);
+	noLoop();
+	canvas.hide();
 }
 
 ///////////////////////////////////////
@@ -127,7 +122,20 @@ function collideElements() {
 		}
 	}
 
-	player.update(); // Update player
+	player?.update(); // Update player
+}
+
+function startGame() {
+	mainMenu.style.display = "none";
+	canvas.show();
+
+	loop();
+
+	displayLevel(currentLevel); // Show current level
+
+	// Player
+	player = new Player(width / 2, height - 65, 50, 50, colours[0], 7.5); // Create player
+	player.teleport(80, 500);
 }
 
 ///////////////////////////////////////
