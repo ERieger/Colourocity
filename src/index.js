@@ -11,9 +11,10 @@ let currentLevel = 0;
 let collectedKeys = 0;
 let frames = 60;
 let mainMenu = document.querySelector('.Main-Menu');
-let levelSelect = document.querySelector('.Level-Select')
+let levelSelect = document.querySelector('.Level-Select');
+let levelButtons = document.querySelector('.buttons');
 let canvas;
-let completedLevels = [];
+let completedLevels = [0];
 
 levelSelect.style.display = "none";
 
@@ -129,8 +130,10 @@ function collideElements() {
 	player?.update(); // Update player
 }
 
-function startGame() {
+function startGame(level) {
+	currentLevel = level;
 	mainMenu.style.display = "none";
+	levelSelect.style.display = "none";
 	canvas.show();
 
 	loop();
@@ -144,14 +147,31 @@ function startGame() {
 
 function returnMenu() {
 	mainMenu.style.display = "block";
+	levelSelect.style.display = "none";
 	canvas.hide();
 	player.sprite.remove();
 	noLoop();
 }
 
+function removeElementsByClass(className) {
+	var elements = document.getElementsByClassName(className);
+	while (elements.length > 0) {
+		elements[0].parentNode.removeChild(elements[0]);
+	}
+}
+
 function selectLevelPage() {
+	mainMenu.style.display = "none";
+	levelSelect.style.display = "block";
+	removeElementsByClass('level-btn');
 	for (let i = 0; i < levels.length; i++) {
-		
+		let btn = document.createElement("BUTTON");
+		btn.onclick = function () {
+			startGame([i]);
+		};
+		btn.classList.add('level-btn');
+		btn.innerHTML = `${i + 1}`
+		levelButtons.appendChild(btn);
 	}
 }
 
