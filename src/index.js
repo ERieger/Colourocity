@@ -138,12 +138,19 @@ function startGame() {
 	player.teleport(80, 500);
 }
 
+function returnMenu() {
+	mainMenu.style.display = "block";
+	canvas.hide();
+	player.sprite.remove();
+	noLoop();
+}
+
 ///////////////////////////////////////
 // P5 Draw Function
 
 function draw() {
 	background(255); // Reset previous frame
-	// Resart level (ESCAPE KEY)
+	// Resart level (R KEY)
 	if (keyIsDown(82)) {
 		displayLevel(currentLevel);
 		player.colour = 'white';
@@ -153,6 +160,10 @@ function draw() {
 
 	if (collectedKeys == levels[currentLevel].keys.length) {
 		door.unlock();
+	}
+
+	if (keyIsDown(27)) {
+		returnMenu()
 	}
 
 	collideElements(); // Collide with objects

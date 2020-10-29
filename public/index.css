@@ -1,21 +1,37 @@
-.content {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 680 auto;
-    grid-template-rows: 560 auto;
-    grid-template:
-    'menu .'
-    '. .';
-}
-
 .Main-Menu {
-    grid-area: menu;
     height: 560px;
     width: 680px;
-    background: linear-gradient(90deg, rgba(180,58,58,1) 0%, rgba(211,109,46,1) 13%, rgba(233,224,37,1) 31%, rgba(240,241,68,1) 36%, rgba(234,244,74,1) 45%, rgba(29,253,89,1) 62%, rgba(43,114,226,1) 83%, rgba(238,69,252,1) 100%);
+    background-image: url(./images/paint.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
 }
 
 .Main-Menu h1 {
     text-align: center;
+    color: linear-gradient(90deg, rgba(180,58,58,1) 0%, rgba(211,109,46,1) 13%, rgba(233,224,37,1) 31%, rgba(240,241,68,1) 36%, rgba(234,244,74,1) 45%, rgba(29,253,89,1) 62%, rgba(43,114,226,1) 83%, rgba(238,69,252,1) 100%);
+    font-size: 100px;
+    padding: 0;
+    margin: 0;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.Main-Menu button {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-size: 90px;
+    color: rgba(43,114,226,1);
+}
+
+.Main-Menu button:hover {
+    color: blue;
 }
