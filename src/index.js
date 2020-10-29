@@ -181,7 +181,6 @@ function selectLevelPage() {
 // P5 Draw Function
 
 function draw() {
-	background(255);
 	image(background, 0, 0, width, height); // Reset previous frame
 
 	// Resart level (R KEY)
