@@ -1,18 +1,24 @@
 .Main-Menu {
     height: 560px;
     width: 680px;
-    background-image: url(./images/paint.png);
+    background-image: url(./images/paint.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     position: relative;
 }
 
-.Main-Menu h1 {
+.Main-Menu {
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
     text-align: center;
-    color: linear-gradient(90deg, rgba(180,58,58,1) 0%, rgba(211,109,46,1) 13%, rgba(233,224,37,1) 31%, rgba(240,241,68,1) 36%, rgba(234,244,74,1) 45%, rgba(29,253,89,1) 62%, rgba(43,114,226,1) 83%, rgba(238,69,252,1) 100%);
+    background: linear-gradient(to right, red,orange, yellow, lightgreen, cyan, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 100px;
-    padding: 0;
+    padding: 50px 0 0 0;
     margin: 0;
 }
 

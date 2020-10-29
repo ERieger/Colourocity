@@ -30,6 +30,7 @@ class Door {
         if (this.sprite.overlap(player.sprite)) {
             player.colour = 'white';
             collectedKeys = 0;
+            completedLevels.push(currentLevel);
             currentLevel++;
             displayLevel(currentLevel);
         }

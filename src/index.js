@@ -11,7 +11,11 @@ let currentLevel = 0;
 let collectedKeys = 0;
 let frames = 60;
 let mainMenu = document.querySelector('.Main-Menu');
+let levelSelect = document.querySelector('.Level-Select')
 let canvas;
+let completedLevels = [];
+
+levelSelect.style.display = "none";
 
 function setup() {
 	canvas = createCanvas(680, 560);
