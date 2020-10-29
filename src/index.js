@@ -149,6 +149,12 @@ function returnMenu() {
 	noLoop();
 }
 
+function selectLevelPage() {
+	for (let i = 0; i < levels.length; i++) {
+		
+	}
+}
+
 ///////////////////////////////////////
 // P5 Draw Function
 
