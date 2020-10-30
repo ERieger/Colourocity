@@ -49,14 +49,14 @@ class Player {
 				const p = this.getBounds(platform.sprite.position, platform.size); // Current platform bounds
 				const c = this.getBounds(target, this.size); // Player bounds
 
-				if (c.l < p.l && p.l < c.r) continue; // Left
-				if (c.l < p.r && p.r < c.r) continue; // Right
-
 				// Top
 				if (c.t < p.t && p.t < c.b) {
 					this.canJump = true; // Can jump
 					this.sprite.velocity.y = 0; // Stop gravity
 				}
+
+				if (c.l < p.l && p.l < c.r) continue; // Left
+				if (c.l < p.r && p.r < c.r) continue; // Right
 
 				if (c.t < p.b && p.b < c.b) this.sprite.velocity.y = 0; // Bottom
 			}
