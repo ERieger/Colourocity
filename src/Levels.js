@@ -364,4 +364,94 @@ let levels = [{
 		w: 55,
 		h: 75
 	}
+}, {
+	stucture: [{
+		x: 80,
+		y: 350,
+		w: 100,
+		h: 25,
+		colour: 0
+	}, {
+		x: 600,
+		y: 350,
+		w: 100,
+		h: 25,
+		colour: 0
+	}, {
+		x: 340,
+		y: 350,
+		w: 100,
+		h: 25,
+		colour: 0
+	}, {
+		x: 340,
+		y: 190,
+		w: 100,
+		h: 25,
+		colour: 0
+	}, {
+		x: 600,
+		y: 190,
+		w: 100,
+		h: 25,
+		colour: 0
+	}, {
+		x: 80,
+		y: 190,
+		w: 100,
+		h: 25,
+		colour: 0
+	}],
+	paints: [{
+		x: 80,
+		y: 320,
+		colour: 'red'
+	}, {
+		x: 80,
+		y: 160,
+		colour: 'red'
+	}, {
+		x: 430,
+		y: 510,
+		colour: 'yellow'
+	}, {
+		x: 250,
+		y: 510,
+		colour: 'yellow'
+	}, {
+		x: 603,
+		y: 320,
+		colour: 'blue'
+	},  {
+		x: 603,
+		y: 160,
+		colour: 'blue'
+	}, {
+		x: 340,
+		y: 320,
+		colour: 'white'
+	}, {
+		x: 80,
+		y: 510,
+		colour: 'white'
+	}],
+	keys: [{
+		x: 150,
+		y: 510,
+		colour: 'orange'
+	}, {
+		x: 330,
+		y: 510,
+		colour: 'green'
+	}, {
+		x: 590,
+		y: 510,
+		colour: 'purple'
+	}],
+	door: {
+		x: 340,
+		y: 140,
+		w: 55,
+		h: 75
+	}
 }];
