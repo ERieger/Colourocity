@@ -27,6 +27,7 @@ class Door {
     }
 
     unlock() {
+        this.colour = 'white';
         if (this.sprite.overlap(player.sprite)) {
             player.colour = 'white';
             collectedKeys = 0;

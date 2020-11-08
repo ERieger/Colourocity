@@ -27,25 +27,6 @@ function setup() {
 }
 
 ///////////////////////////////////////
-// Object Creation Functions
-// Create platform
-function createPlatform(x, y, w, h, colour) {
-	const platform = new Platform(x, y, w, h, colour); // Temp var
-	platforms.push(platform); // Push to array
-}
-
-// Create paints
-function createPaint(x, y, colour) {
-	const paint = new Paint(x, y, colour); // Temp var
-	paints.push(paint); // Push to array
-}
-
-function createKey(x, y, colour) {
-	const key = new Key(x, y, colour); // Temp var
-	keys.push(key); // Push to array
-}
-
-///////////////////////////////////////
 // Display Functions
 
 // Display level elements
@@ -72,28 +53,28 @@ function displayLevel(level) {
 	platforms = []; // Clear platforms
 
 	// Floor
-	createPlatform(width / 2, height - 15, width, 30, color(0));
+	platforms.push(new Platform(width / 2, height - 15, width, 30, color(0)));
 
 	// Roof
-	createPlatform(width / 2, 5, width, 10, color(255, 255, 255, 0));
+	platforms.push(new Platform(width / 2, 5, width, 10, color(255, 255, 255, 0)));
 
 	// Walls
-	createPlatform(15, height / 2, 30, height, color(0));
-	createPlatform(width - 15, height / 2, 30, height, color(0));
+	platforms.push(new Platform(15, height / 2, 30, height, color(0)));
+	platforms.push(new Platform(width - 15, height / 2, 30, height, color(0)));
 
 	// Create platforms
 	for (let i = 0; i < levels[level].stucture.length; i++) {
-		createPlatform(levels[level].stucture[i].x, levels[level].stucture[i].y, levels[level].stucture[i].w, levels[level].stucture[i].h, levels[level].stucture[i].colour); // Call create function
+		platforms.push(new Platform(levels[level].stucture[i].x, levels[level].stucture[i].y, levels[level].stucture[i].w, levels[level].stucture[i].h, levels[level].stucture[i].colour)); // Call create function
 	}
 
 	// Create paints
 	for (let i = 0; i < levels[level].paints.length; i++) {
-		createPaint(levels[level].paints[i].x, levels[level].paints[i].y, levels[level].paints[i].colour); // Call create function
+		paints.push(new Paint(levels[level].paints[i].x, levels[level].paints[i].y, levels[level].paints[i].colour)); // Call create function
 	}
 
 	// Create keys
 	for (let i = 0; i < levels[level].keys.length; i++) {
-		createKey(levels[level].keys[i].x, levels[level].keys[i].y, levels[level].keys[i].colour);
+		keys.push(new Key(levels[level].keys[i].x, levels[level].keys[i].y, levels[level].keys[i].colour));
 	}
 
 	// Show door
