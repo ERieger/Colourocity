@@ -26,9 +26,6 @@ function setup() {
 	background = loadImage('../public/images/paint.jpg')
 }
 
-///////////////////////////////////////
-// Display Functions
-
 // Display level elements
 function displayLevel(level) {
 	currentLevel = level;
@@ -157,9 +154,6 @@ function selectLevelPage() {
 		levelButtons.appendChild(btn);
 	}
 }
-
-///////////////////////////////////////
-// P5 Draw Function
 
 function draw() {
 	image(background, 0, 0, width, height); // Reset previous frame
