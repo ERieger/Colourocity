@@ -1,6 +1,3 @@
-///////////////////////////////////////
-// Variables
-
 let player;
 let paints = [];
 let platforms = [];
@@ -88,6 +85,7 @@ function collideElements() {
 
 		// If touching player
 		if (collide == true) {
+			console.log(`%cCollected ${keys[i].colour} key`, `color: ${keys[i].colour}`);
 			collectedKeys++;
 			keys[i].sprite.remove();
 		}
@@ -99,6 +97,7 @@ function collideElements() {
 
 		// If touching player
 		if (collide) {
+			console.log(`%cCollided with ${paints[i].colour} paint`, `color: ${paints[i].colour}`);
 			// If same colour as player return
 			if (player.colour != paints[i].colour) {
 				player.mix(paints[i].colour); // Player colour mix

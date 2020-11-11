@@ -29,11 +29,13 @@ class Door {
     unlock() {
         this.colour = 'white';
         if (this.sprite.overlap(player.sprite)) {
+            console.log('Door unlocked');
             player.colour = 'white';
             collectedKeys = 0;
             completedLevels.push(currentLevel);
             if (currentLevel == levels.length - 1) {
                 returnMenu();
+                console.log('Game complete! 🏆🏆🏆');
             } else {
                 currentLevel++;
                 displayLevel(currentLevel);

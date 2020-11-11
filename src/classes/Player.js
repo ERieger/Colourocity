@@ -105,6 +105,7 @@ class Player {
 		// If player white set paint colour
 		if (this.colour == 'white') {
 			this.colour = colour;
+			
 		}
 
 		// Loop through possible colour combinations
@@ -122,5 +123,7 @@ class Player {
 				this.colour = 'black'; // Set black if can't mix
 			}
 		}
+
+		console.log(`%cMixed colour: ${this.colour}`, `color: ${this.colour}`);
 	}
 }
