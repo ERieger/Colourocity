@@ -66,7 +66,7 @@ class Player {
 	handleInput() {
 		// Up arrow + W
 		if ((keyIsDown(38) || keyIsDown(87)) && this.canJump) {
-			this.sprite.velocity.y = -22;
+			this.sprite.velocity.y = -20;
 		}
 
 		// Reset velocity
