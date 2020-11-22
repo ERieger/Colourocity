@@ -17,6 +17,7 @@ Clone the repository using [git](https://git-scm.com/).
 ```sh
 git clone https://github.com/ERieger/colourocity.git
 ```
+> Note: This game requires VS Code's live server extension to run.
 
 ## Usage
 
