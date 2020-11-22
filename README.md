@@ -17,7 +17,6 @@ Clone the repository using [git](https://git-scm.com/).
 ```sh
 git clone https://github.com/ERieger/colourocity.git
 ```
-> Note: You will need to add the p5.js and p5.play local files. Create a `modules` folder in `src`, and place the files here.
 
 ## Usage
 
