@@ -77,7 +77,7 @@ function displayLevel(level) {
 	player?.teleport(80, 500);
 }
 
-// Continuosuly draw elements
+// Check collisions
 function collideElements() {
 	// Draw keys
 	for (let i = 0; i < keys.length; i++) {

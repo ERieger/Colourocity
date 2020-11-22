@@ -38,6 +38,7 @@ class Door {
                 console.log('Game complete! 🏆🏆🏆');
             } else {
                 currentLevel++;
+                console.log(`You are now on level ${currentLevel + 1}`);
                 displayLevel(currentLevel);
             }
         }
