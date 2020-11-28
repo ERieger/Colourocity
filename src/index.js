@@ -20,7 +20,7 @@ function setup() {
 	canvas = createCanvas(680, 560);
 	noLoop();
 	canvas.hide();
-	background = loadImage('../public/images/paint.jpg')
+	background = loadImage('./images/paint.jpg')
 }
 
 // Display level elements
